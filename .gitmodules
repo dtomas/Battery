@@ -1,0 +1,6 @@
+[submodule "rox-lib"]
+	path = rox-lib
+	url = https://github.com/rox-desktop/rox-lib.git
+[submodule "TrayLib"]
+	path = TrayLib
+	url = https://github.com/dtomas/TrayLib.git
