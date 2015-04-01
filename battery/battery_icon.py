@@ -19,6 +19,8 @@ class BatteryIcon(MenuIcon):
 
     def get_icon_names(self):
         percent = self.__battery.percent
+        if self.__battery.missing:
+            return ['battery-missing']
         if self.__battery.charging:
             if percent <= 10:
                 return ['battery-caution-charging']
@@ -43,6 +45,8 @@ class BatteryIcon(MenuIcon):
                 return ['battery-full']
 
     def make_tooltip(self):
+        if self.__battery.missing:
+            return _('No battery')
         return '%s %% (%s %s)' % (
             self.__battery.percent,
             self.__battery.time,

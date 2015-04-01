@@ -2,13 +2,12 @@
 # Copyright (C) 2015 Dennis Tomas
 # This file is distributed under the same license as the Battery package.
 # Dennis Tomas <den.t@gmx.de>, 2015.
-
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TaskTray 0.7.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-31 21:35+CEST\n"
+"POT-Creation-Date: 2015-04-01 13:02+CEST\n"
 "PO-Revision-Date: 2007-04-02 10:18+0200\n"
 "Last-Translator: Dennis Tomas <den.t@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: battery/battery_icon.py:47
+#: battery/battery_icon.py:50
+msgid "No battery"
+msgstr "Keine Batterie"
+
+#: battery/battery_icon.py:54
 msgid "remaining"
 msgstr "verbleibend"
 
-#: battery/battery_icon.py:47
+#: battery/battery_icon.py:54
 msgid "until charged"
 msgstr "zu laden"

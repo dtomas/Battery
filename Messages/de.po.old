@@ -1,8 +1,8 @@
-# TaskTray Applet
-# Copyright (C) 2006 Dennis Tomas
-# This file is distributed under the same license as the TaskTray package.
-# Dennis Tomas <den.t@gmx.de>, 2006.
-#
+# Battery Applet
+# Copyright (C) 2015 Dennis Tomas
+# This file is distributed under the same license as the Battery package.
+# Dennis Tomas <den.t@gmx.de>, 2015.
+
 #, fuzzy
 msgid ""
 msgstr ""
@@ -17,3 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: battery/battery_icon.py:47
+msgid "remaining"
+msgstr "verbleibend"
+
+#: battery/battery_icon.py:47
+msgid "until charged"
+msgstr "zu laden"

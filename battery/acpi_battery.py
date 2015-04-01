@@ -14,11 +14,13 @@ class Battery(object):
         self.percent = 0
         self.time = ''
         self.charging = False
+        self.missing = True
         self.update()
 
     def update(self):
         p = subprocess.Popen(['acpi'], stdout=subprocess.PIPE)
         out_data, err_data = p.communicate()
+        self.missing = not bool(out_data)
         m = ACPI_RE.match(out_data)
         if m is None:
             return
