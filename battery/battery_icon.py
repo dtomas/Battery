@@ -13,31 +13,30 @@ class BatteryIcon(MenuIcon):
     def __init__(self, tray, icon_config, tray_config, battery):
         MenuIcon.__init__(self, tray, icon_config, tray_config)
         self.__battery = battery
-        self.__warn_count = 0
         self.__update()
+        self.__check_low()
 
         gobject.timeout_add(5000, self.__update)
+        gobject.timeout_add(120000, self.__check_low)
 
     def __warn_low(self):
         processes.PipeThroughCommand([
             "notify-send", "--icon=%s" % self.find_icon_name(),
             _("Battery is low!")
         ], None, None).start()
-        # Warn again in 2 minutes.
-        self.__warn_count = 24
+
+    def __check_low(self):
+        t = time.strptime(self.__battery.time, '%H:%M:%S')
+        d = datetime.timedelta(0, t.tm_sec, 0, 0, t.tm_min, t.tm_hour)
+        seconds = d.total_seconds()
+        if seconds <= 5 * 60:
+            self.__warn_low()
+        return True
 
     def __update(self):
         self.__battery.update()
         self.update_icon()
         self.update_tooltip()
-        if self.__warn_count == 0:
-            t = time.strptime(self.__battery.time, '%H:%M:%S')
-            d = datetime.timedelta(0, t.tm_sec, 0, 0, t.tm_min, t.tm_hour)
-            seconds = d.total_seconds()
-            if seconds <= 5 * 60:
-                self.__warn_low()
-        else:
-            self.__warn_count -= 1
         return True
 
     def get_icon_names(self):
