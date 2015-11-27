@@ -2,6 +2,12 @@ import re
 import subprocess
 
 
+try:
+    subprocess.Popen(['acpi'])
+except OSError:
+    raise ImportError("Command 'acpi' was not found.")
+
+
 ACPI_RE = re.compile(
     r'Battery [0-9]+: (?P<dis>Dis)?[cC]harging, (?P<percent>[0-9]+)%, '
     r'(?P<time>[0-9]+:[0-9]+:[0-9]+)'

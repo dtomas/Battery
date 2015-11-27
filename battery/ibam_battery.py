@@ -2,6 +2,12 @@ import re
 import subprocess
 
 
+try:
+    subprocess.Popen(['ibam'])
+except OSError:
+    raise ImportError("Command 'ibam' was not found.")
+
+
 PERCENT_RE = re.compile(r'Battery percentage: +(?P<percent>[0-9]+) %')
 TIME_RE = re.compile(r'Battery time left: +(?P<time>[0-9]+:[0-9]+:[0-9]+)')
 

@@ -7,7 +7,11 @@ from traylib import ICON_THEME
 from traylib.main import Main
 from traylib.tray import Tray
 
-from battery.acpi_battery import Battery
+try:
+    from battery.acpi_battery import Battery
+except ImportError:
+    from battery.ibam_battery import Battery
+
 from battery.battery_icon import BatteryIcon
 
 

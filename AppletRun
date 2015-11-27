@@ -11,7 +11,11 @@ sys.path.append(
 )
 
 import rox
-from battery.main import BatteryMain
+try:
+    from battery.main import BatteryMain
+except ImportError:
+    rox.croak("No suitable backend found.")
+    sys.exit(1)
 
 __builtins__._ = rox.i18n.translation(os.path.join(rox.app_dir, 'Messages'))
 
