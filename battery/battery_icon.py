@@ -26,7 +26,7 @@ class BatteryIcon(MenuIcon):
         ], None, None).start()
 
     def __check_low(self):
-        if self.__battery.charging or self.__battery.missing:
+        if self.__battery.state != 'DISCHARGING':
             return True
         try:
             t = time.strptime(self.__battery.time, '%H:%M:%S')
@@ -46,9 +46,9 @@ class BatteryIcon(MenuIcon):
 
     def get_icon_names(self):
         percent = self.__battery.percent
-        if self.__battery.missing:
+        if self.__battery.state == 'MISSING':
             return ['battery-missing']
-        if self.__battery.charging:
+        if self.__battery.state == 'CHARGING':
             if percent <= 10:
                 return ['battery-caution-charging']
             if percent <= 30:
@@ -59,6 +59,8 @@ class BatteryIcon(MenuIcon):
                 return ['battery-full-charging']
             else:
                 return ['battery-full-charged']
+        if self.__battery.state == 'FULL':
+            return ['battery-full-charged']
         else:
             if percent == 0:
                 return ['battery-empty']
@@ -72,10 +74,13 @@ class BatteryIcon(MenuIcon):
                 return ['battery-full']
 
     def make_tooltip(self):
-        if self.__battery.missing:
+        if self.__battery.state == 'MISSING':
             return _('No battery')
+        if self.__battery.state == 'FULL':
+            return _('Full')
         return '%s %% (%s %s)' % (
             self.__battery.percent,
             self.__battery.time,
-            _('until charged') if self.__battery.charging else _('remaining')
+            _('until charged') if self.__battery.state == 'CHARGING' else
+            _('remaining')
         )

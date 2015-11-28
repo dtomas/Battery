@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-04-01 13:02+CEST\n"
+"POT-Creation-Date: 2015-11-28 08:36+CET\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,15 +15,23 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: battery/battery_icon.py:50
+#: battery/battery_icon.py:25
+msgid "Battery is low!"
+msgstr ""
+
+#: battery/battery_icon.py:78
 msgid "No battery"
 msgstr ""
 
-#: battery/battery_icon.py:54
-msgid "remaining"
+#: battery/battery_icon.py:80
+msgid "Full"
 msgstr ""
 
-#: battery/battery_icon.py:54
+#: battery/battery_icon.py:84
 msgid "until charged"
+msgstr ""
+
+#: battery/battery_icon.py:85
+msgid "remaining"
 msgstr ""
 
