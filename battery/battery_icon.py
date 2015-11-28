@@ -26,7 +26,12 @@ class BatteryIcon(MenuIcon):
         ], None, None).start()
 
     def __check_low(self):
-        t = time.strptime(self.__battery.time, '%H:%M:%S')
+        if self.__battery.charging or self.__battery.missing:
+            return True
+        try:
+            t = time.strptime(self.__battery.time, '%H:%M:%S')
+        except ValueError:
+            return True
         d = datetime.timedelta(0, t.tm_sec, 0, 0, t.tm_min, t.tm_hour)
         seconds = d.total_seconds()
         if seconds <= 5 * 60:
