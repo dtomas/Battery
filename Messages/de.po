@@ -18,7 +18,7 @@ msgstr ""
 
 #: battery/battery_icon.py:25
 msgid "Battery is low!"
-msgstr "Battery ist fast leer!"
+msgstr "Batterie ist fast leer!"
 
 #: battery/battery_icon.py:78
 msgid "No battery"
